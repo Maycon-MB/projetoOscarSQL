@@ -1,0 +1,48 @@
+Tabela,Relacionamento,Nome do Relacionamento,Descrição,
+Filme,Participacao,Compõe,Tabela para cadastro de filmes,
+,Premiacao,Recebe,,
+,Diretor,É dirigido,,
+Ator,Participacao,Realiza,Tabela para cadastro de atores,
+Diretor,Filme,Dirige,Tabela para cadastro de diretores,
+Premio,Premiacao,Está contido,Tabela para cadastro das premiações,
+Participacao,Filme,É composta,Tabela associativa entre Filme e Ator,
+,Ator,É realizada,,
+Premiacao,Filme,É dada,Tabela associativa entre Filme e Premio,
+,Premio,Contém,,
+,,,,
+Tabela,Nome da Coluna,Tipo de Dados,Restrições,Descrição
+Filme,Cod_Filme,Inteiro,"PK, NOT NULL",Código de identificação do filme
+,Titulo,Caractere,NOT NULL,Titulo do filme
+,Cod_Diretor,Inteiro,"FK, NOT NULL",Código de identificação do diretor responsável pelo filme
+,,,,
+Tabela,Nome da Coluna,Tipo de Dados,Restrições,Descrição
+Ator,Cod_Ator,Inteiro,"PK, NOT NULL",Código de identificação do ator
+,Nome_Ator,Caractere,NOT NULL,Nome do ator
+,Cidade_Ator,Caractere,NOT NULL,Cidade do ator
+,Pais_Ator,Caractere,NOT NULL,País do ator
+,Genero_Ator,Caractere,NOT NULL,Gênero do ator
+,,,,
+Tabela,Nome da Coluna,Tipo de Dados,Restrições,Descrição
+Premio,Cod_Premio,Inteiro,"PK, NOT NULL",Código de identificação do prêmio
+,Descricao_Premio,Caractere,NOT NULL,Descriação do prêmio
+,,,,
+Tabela,Nome da Coluna,Tipo de Dados,Restrições,Descrição
+Participacao,A_Cod_Ator,Inteiro,"PK, FK, NOT NULL",Coluna que identifica o ator e compõe a chave primária da tabela (em conjunto com F_Cod_Filme) e serve como chave estrangeira
+,F_Cod_Filme,Inteiro,"PK, FK, NOT NULL",Coluna que identifica o filme e compõe a chave primária da tabela (em conjunto com A_Cod_Ator) e serve como chave estrangeira
+,,,,
+Tabela,Nome da Coluna,Tipo de Dados,Restrições,Descrição
+Premiacao,F_Cod_Filme,Inteiro,"PK, NOT NULL",Coluna que identifica o filme e compõe a chave primária da tabela (em conjunto com P_Cod_Premio) e serve como chave estrangeira
+,P_Cod_Premio,Inteiro,"PK, FK, NOT NULL",Coluna que identifica o filme e compõe a chave primária da tabela (em conjunto com F_Cod_Filme) e serve como chave estrangeira
+,Ano,Inteiro,NOT NULL,Ano da premiação
+,,,,
+Relacionamento,Tabela 1 – PK,Tabela 2 – FK,Descrição,
+Compõe,Filme,Participacao,Descrição do relacionamento entre Filme  e Participacao,
+Recebe,Filme,Premiacao,Descrição do relacionamento entre Filme e Premiacao,
+É dirigido,Filme,Diretor,Descrição do relacionamento entre Filme e Diretor,
+Realiza,Ator,Participacao,Descrição do relacionamento entre Ator e Participacao,
+Dirige,Diretor,Filme,Descrição do relacionamento entre Diretor e Filme,
+Está contido,Premio,Premiacao,Descrição do relacionamento entre Premio e Premiacao,
+É composta,Filme,Participacao,Descrição do relacionamento entre Filme e Participacao,
+É realizada,Ator,Participacao,Descrição do relacionamento entre Ator e Participacao,
+É dada,Filme,Premiacao,Descrição do relacionamento entre Filme e Premiacao,
+Contém,Premio,Premiacao,Descrição do relacionamento entre Premio e Premiacao,
